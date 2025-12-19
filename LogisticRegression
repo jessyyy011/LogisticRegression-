@@ -1,0 +1,21 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression
+x=np.array({1,2,3,4,5,6,7,8}).reshape(-1,1)
+y=np.array({0,0,0,1,1,1,1,1})
+x=np.array([1,2,3,4,5,6,7,8]).reshape(-1,1)
+y=np.array([0,0,0,1,1,1,1,1])
+model = LogisticRegression()
+model.fit(x,y)
+print("Prediction for 3 hours:", model.predict([[3]])[0])
+print("probability:", model.predict_proba([[3]])[0])
+Prediction for 3 hours: 0
+probability: [0.63432114 0.36567886]
+X_range = np.linspace(0,9,100).reshape(-1,1)
+y_prob = model.predict_proba(x_range)[:,1]
+plt.scatter(x,y)
+plt.plot(X_range,y_prob)
+plt.xlabel("Hours studied")
+plt.ylabel("probability of pass")
+plt.title("Logistic Regression")
+plt.show()
